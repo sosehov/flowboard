@@ -1,0 +1,17 @@
+# Ignore Rails files
+/backend/log/*
+/backend/tmp/*
+/backend/db/*.sqlite3
+/backend/db/*.sqlite3-journal
+/backend/storage/*
+/backend/public/packs
+/backend/public/assets
+
+# Ignore Node files
+/frontend/node_modules/
+/frontend/build/
+/frontend/.env
+
+# Ignore system files
+.DS_Store
+.env
