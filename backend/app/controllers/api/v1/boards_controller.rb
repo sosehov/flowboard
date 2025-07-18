@@ -11,7 +11,8 @@ class Api::V1::BoardsController < ApplicationController
 
   def create
     board = Board.new(board_params)
-    render json: board, status: :created
+    if board.save
+      render json: board, status: :created
     else
       render json: { errors: board.errors.full_messages }, status: :unprocessable_entity
     end
