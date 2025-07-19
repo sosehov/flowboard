@@ -4,26 +4,25 @@ class Api::V1::ListsController < ApplicationController
 
   # GET /api/v1/boards/:board_id/lists
   def index
-    lists = List.all
-    render json: lists
-  end
-
-  # GET /api/v1/lists/:id
-  def show
-    list = List.find(params[:id])
-    render json: list, include: cards
+    render json: @board.lists, include: :cards
   end
 
   # POST /api/v1/boards/:board_id/lists
   def create
-    list = List.new(list_params)
+    list = @board.lists.build(list_params)
     if list.save
       render json: list, status: :created
     else
-      render json: { errors: list.errors.full_messages }, status :unprocessable_entity
+      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
-  # PATCH/PUT /api/v1/list/:id
+  # GET /api/v1/lists/:id
+  def show
+    render json: @list, include: :cards
+  end
+
+  # PATCH/PUT /api/v1/lists/:id
   def update
     if @list.update(list_params)
       render json: @list
@@ -52,5 +51,3 @@ class Api::V1::ListsController < ApplicationController
     params.require(:list).permit(:title)
   end
 end
-
-puts params.inspect
