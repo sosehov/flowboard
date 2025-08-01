@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BoardsPage from './pages/BoardsPage';
-import BoardDetailPage from './BoardDetailPage';
+import BoardDetailPage from './pages/BoardDetailPage';
 
 function App() {
   return (

@@ -1,9 +1,11 @@
 class Api::V1::BoardsController < ApplicationController
+  # GET /api/v1/boards
   def index
     boards = Board.all
     render json: boards
   end
 
+  # GET /api/v1/boards/:id
   def show
     board = Board.find(params[:id])
     render json: board, include: :lists
